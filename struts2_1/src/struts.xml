@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+
+    <package name="default" namespace="/" extends="struts-default">
+		<action name="userAction" class="com.hephec.action.UserAction">
+			<result name="success">/success.jsp</result>
+			<result name="fail">/fail.jsp</result>
+			<interceptor-ref name="modelDriven"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+       	<action name="loginAction" class="com.hephec.action.LoginAction">
+       		<result name="success">/success.jsp</result>
+			<result name="fail">/fail.jsp</result>
+       	</action>
+       	<action name="resAction" class="com.hephec.action.ResAction">
+       		<result>/success.jsp</result>
+       	</action>
+       	<action name="awareAction" class="com.hephec.action.AwareAction">
+       		<result>/success.jsp</result>
+       	</action>
+       	<action name="save" class="com.hephec.action.UserFormAction">
+       		<result name="input">/form.jsp</result>
+       	</action>
+       	
+       	 <action name="login" class="com.hephec.action.LoginAction1">
+			   <!-- 登录成功到success.jsp页面 -->
+			   <result name="success">success.jsp</result>
+			   <!-- 登录验证返回的数据 -->
+			   <result name="result" type="stream">
+			    <param name="contentType">text/html</param>
+			    <param name="inputName">result</param>
+			   </result>
+		  </action>
+    </package>
+
+</struts>
